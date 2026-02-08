@@ -1,26 +1,9 @@
-import { getPhotos, getVideos } from "./api/mediaApi";
+import Searchbar from "./components/Searchbar";
 
 const App = () => {
   return (
-    <div>
-      <button
-        className="border m-5 bg-green-500 p-3"
-        onClick={async() => {
-          const data = await getPhotos("lion") ;
-          console.log("Tasveerain>>>",data.results); 
-        }}
-      >
-        Get Photos Data
-      </button>
-      <button
-        className="border m-5 bg-green-500 p-3"
-        onClick={async() => {
-          const data = await getVideos("lion") ;
-          console.log("Videos>>>",data.videos); 
-        }}
-      >
-        Get Videos Data
-      </button>
+    <div className="h-screen w-full bg-gray-950 text-white">
+      <Searchbar/>
     </div>
   );
 };
