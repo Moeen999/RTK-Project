@@ -6,6 +6,7 @@ import {
   setLoading,
   setResults,
 } from "../redux/features/searchSlice";
+import ResultCard from "./ResultCard";
 
 const ResultGrid = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const ResultGrid = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        if (!query) return <h1>Enter a query...</h1>;
         dispatch(setLoading());
         let data = [];
         if (activeTab === "photos") {
@@ -49,9 +51,13 @@ const ResultGrid = () => {
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error</h1>;
   return (
-    <div>
+    <div className="w-full grid grid-cols-1 px-3 md:grid-cols-4 gap-6 place-items-center h-auto  ">
       {results?.map((item, index) => {
-        return <p key={index}>{index}:-{item.title}</p>;
+        return (
+          <div key={index}>
+            <ResultCard item={item} />
+          </div>
+        );
       })}
     </div>
   );
