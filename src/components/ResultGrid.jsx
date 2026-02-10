@@ -13,6 +13,7 @@ const ResultGrid = () => {
   const { query, activeTab, results, loading, error } = useSelector(
     (store) => store.search,
   );
+  console.log(results);
 
   useEffect(() => {
     const getData = async () => {
